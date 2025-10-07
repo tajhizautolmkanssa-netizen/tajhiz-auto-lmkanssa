@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tajhiz Auto Lmkanssa - Auto Parts Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Noto+Sans+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', 'Noto Sans Arabic', sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background-color: #f8f9fa;
+        }
+        .top-bar {
+            background-color: #000;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #fff;
+        }
+        .top-bar .left {
+            display: flex;
+            gap: 15px;
+        }
+        .top-bar .right {
+            display: flex;
+            gap: 15px;
+        }
+        .top-bar a {
+            color: #FFD700;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .top-bar a:hover {
+            color: #fff;
+        }
+        .main-header {
+            background-color: #111;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #FFD700;
+        }
+        .search-container {
+            flex: 1;
+            max-width: 600px;
+            margin: 0 20px;
+            display: flex;
+            align-items: center;
+        }
+        .search-input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+        }
+        .search-input::placeholder {
+            color: #ccc;
+        }
+        .search-btn {
+            background-color: #FFD700;
+            color: #000;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .search-btn:hover {
+            background-color: #FFA500;
+        }
+        .categories {
+            display: flex;
+            gap: 20px;
+        }
+        .categories a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .categories a:hover {
+            color: #FFD700;
+            text-shadow: 0 0 10px #FFD700;
+        }
+        .hero-banner {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1502877338535-766e1452684a?w=1920&h=600&fit=crop') center/cover;
+            padding: 100px 20px;
+            text-align: center;
+            color: #fff;
+        }
+        .hero-banner h1 {
+            font-size: 3em;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+        .hero-banner p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+        .cta-btn {
+            background-color: #FFD700;
+            color: #000;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+        }
+        .cta-btn:hover {
+            background-color: #FFA500;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .section {
+            margin-bottom: 60px;
+        }
+        .section h2 {
+            color: #000;
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .car-search {
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            align-items: end;
+        }
+        .car-search input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .car-search select {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .search-ref {
+            grid-column: 1 / -1;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .search-ref input {
+            flex: 1;
+        }
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background-color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 15px;
+        }
+        .product-name {
+            color: #fff;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .product-ref {
+            color: #FFD700;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .add-to-cart {
+            background-color: #FFD700;
+            color: #000;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .add-to-cart:hover {
+            background-color: #FFA500;
+        }
+        .discount-ribbon {
+            position: absolute;
+            top: 10px;
+            right: -10px;
+            background-color: #FFD700;
+            color: #000;
+            padding: 5px 15px;
+            transform: rotate(45deg);
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .advantages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        .advantage-item i {
+            font-size: 3em;
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+        .advantage-item h3 {
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .advantage-item p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .suppliers-section {
+            background-color: #f8f9fa;
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .suppliers-section p {
+            font-size: 1.2em;
+            color: #000;
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #000;
+            padding: 40px 20px 20px;
+            color: #fff;
+        }
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        .footer-links a {
+            color: #FFD700;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        .footer-links a:hover {
+            color: #fff;
+        }
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+        .social-icons a {
+            color: #FFD700;
+            font-size: 1.5em;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: #fff;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #ccc;
+        }
+        @media (max-width: 768px) {
+            .top-bar { flex-direction: column; gap: 10px; }
+            .main-header { flex-direction: column; gap: 15px; }
+            .search-container { max-width: 100%; margin: 0; }
+            .categories { justify-content: center; }
+            .hero-banner h1 { font-size: 2em; }
+            .hero-banner p { font-size: 1.2em; }
+            .car-search { grid-template-columns: 1fr; }
+            .search-ref { flex-direction: column; }
+        }
+        /* Autocomplete Simulation */
+        .search-input:focus {
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        /* Shopping Cart Icon in Header (simple) */
+        .cart-icon {
+            position: relative;
+            color: #FFD700;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="left">
+            <a href="#">Login</a>
+            <a href="#">Supplier Account</a>
+        </div>
+        <div class="right">
+            <select style="background: #333; color: #fff; border: 1px solid #FFD700; padding: 5px;">
+                <option>AR</option>
+                <option>FR</option>
+                <option>EN</option>
+            </select>
+            <a href="#">+212 6 00 00 00 00</a>
+            <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="logo">Tajhiz Auto Lmkanssa</div>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search by reference, model, or keyword…">
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+        </div>
+        <nav class="categories">
+            <a href="#">Brakes</a>
+            <a href="#">Batteries</a>
+            <a href="#">Engine</a>
+            <a href="#">Electrical</a>
+            <a href="#"><i class="fas fa-shopping-cart cart-icon"></i></a>
+        </nav>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <h1>Special Offers & Fast Delivery</h1>
+        <p>Up to 30% Off on Top Auto Parts – Delivered in 24 Hours!</p>
+        <a href="#deals" class="cta-btn">Browse Products</a>
+    </section>
+
+    <!-- Search by Car -->
+    <div class="container">
+        <section class="section car-search" id="car-search">
+            <h2 style="grid-column: 1 / -1; color: #000;">Search by Car</h2>
+            <select>
+                <option>Brand (e.g., Toyota)</option>
+                <option>Ford</option>
+                <option>BMW</option>
+            </select>
+            <input type="text" placeholder="Model (e.g., Camry)">
+            <input type="number" placeholder="Year (e.g., 2020)">
+            <select>
+                <option>Engine Type (e.g., 2.0L)</option>
+                <option>1.6L</option>
+                <option>3.0L</option>
+            </select>
+            <button class="cta-btn" style="width: 100%;">Show Results</button>
+            <div class="search-ref">
+                <input type="text" placeholder="Or search by Reference / OEM">
+                <button class="search-btn">Search</button>
+            </div>
+        </section>
+
+        <!-- Deals & Best Sellers -->
+        <section class="section" id="deals">
+            <h2>Deals & Best Sellers</h2>
+            <div class="deals-grid">
+                <div class="product-card">
+                    <span class="discount-ribbon">-20%</span>
+                    <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7e8e?w=250&h=200&fit=crop" alt="Engine Filter">
+                    <div class="product-info">
+                        <h3 class="product-name">Oil Filter Kit</h3>
+                        <p class="product-ref">Ref: 12345-OIL</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="discount-ribbon">Hot Deal</span>
+                    <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=250&h=200&fit=crop" alt="Brake Pads">
+                    <div class="product-info">
+                        <h3 class="product-name">Brake Pads</h3>
+                        <p class="product-ref">Ref: BP-67890</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=250&h=200&fit=crop" alt="Battery">
+                    <div class="product-info">
+                        <h3 class="product-name">Car Battery</h3>
+                        <p class="product-ref">Ref: BAT-11223</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <span class="discount-ribbon">-15%</span>
+                    <img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=250&h=200&fit=crop" alt="Spark Plugs">
+                    <div class="product-info">
+                        <h3 class="product-name">Spark Plugs Set</h3>
+                        <p class="product-ref">Ref: SP-44556</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Store Advantages -->
+        <section class="section advantages">
+            <h2 style="grid-column: 1 / -1; color: #000;">Why Choose Us?</h2>
+            <div class="advantage-item">
+                <i class="fas fa-shipping-fast"></i>
+                <h3>Fast Delivery</h3>
+                <p>توصيل سريع / Livraison Rapide</p>
+            </div>
+            <div class="advantage-item">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Warranty</h3>
+                <p>ضمان / Garantie</p>
+            </div>
+            <div class="advantage-item">
+                <i class="fas fa-undo"></i>
+                <h3>Easy Returns</h3>
+                <p>إرجاع سهل / Retours Faciles</p>
+            </div>
+            <div class="advantage-item">
+                <i class="fas fa-headset"></i>
+                <h3>24/7 Support</h3>
+                <p>دعم 24/7 / Support 24/7</p>
+            </div>
+        </section>
+
+        <!-- Suppliers Section -->
+        <section class="suppliers-section">
+            <h2 style="color: #000;">Join as a Supplier</h2>
+            <p>Create an account to display your products and reach thousands of customers.</p>
+            <a href="#" class="cta-btn">Create Your Account Now</a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <h4>About Us</h4>
+                <a href="#">About Tajhiz Auto</a>
+                <a href="#">Our Story</a>
+            </div>
+            <div class="footer-links">
+                <h4>Return Policy</h4>
+                <a href="#">Returns</a>
+                <a href="#">Exchanges</a>
+            </div>
+            <div class="footer-links">
+                <h4>Shipping Methods</h4>
+                <a href="#">Delivery Options</a>
+                <a href="#">Tracking</a>
+            </div>
+            <div class="footer-links">
+                <h4>Secure Payment</h4>
+                <a href="#">Payment Methods</a>
+                <a href="#">Security</a>
+            </div>
+            <div class="footer-links">
+                <h4>FAQ</h4>
+                <a href="#">Help Center</a>
+                <a href="#">Contact</a>
+            </div>
