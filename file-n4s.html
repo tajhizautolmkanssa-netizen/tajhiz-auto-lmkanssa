@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Performance Auto Parts - Find Your Fit</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo">AUTO PARTS PRO</div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#">Shop By Brand</a></li>
+                <li><a href="#">Performance</a></li>
+                <li><a href="#">Maintenance</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <button class="btn-account">My Account</button>
+            <button class="btn-cart">Cart (0)</button>
+        </div>
+    </header>
+
+    <main>
+        
+        <!-- ============================================= -->
+        <!-- CORE FEATURE: VEHICLE FITMENT SELECTOR -->
+        <!-- ============================================= -->
+        <section class="fitment-selector-section">
+            <div class="container">
+                <h2>Find Parts That Fit Your Vehicle</h2>
+                <div class="fitment-tool">
+                    <select id="year-select" class="fitment-input">
+                        <option value="">Year</option>
+                        <!-- Options would be populated by JavaScript/Backend -->
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                    </select>
+                    <select id="make-select" class="fitment-input">
+                        <option value="">Make</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Ford">Ford</option>
+                    </select>
+                    <select id="model-select" class="fitment-input">
+                        <option value="">Model</option>
+                        <option value="Civic">Civic</option>
+                        <option value="F-150">F-150</option>
+                    </select>
+                    <select id="engine-select" class="fitment-input">
+                        <option value="">Engine</option>
+                        <option value="2.0L">2.0L</option>
+                    </select>
+                    <button class="btn-search" onclick="searchParts()">Search Parts</button>
+                </div>
+                <div class="my-garage">
+                    <p>Or, use your saved vehicle: <a href="#" id="load-garage">2018 Honda Civic 2.0L (Load)</a></p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Featured Categories/Products -->
+        <section class="featured-products container">
+            <h3>Popular Categories</h3>
+            <div class="category-grid">
+                <div class="category-card">Brakes & Suspension</div>
+                <div class="category-card">Engine Components</div>
+                <div class="category-card">Exhaust Systems</div>
+                <div class="category-card">Lighting</div>
+            </div>
+
+            <h3>New Arrivals</h3>
+            <div class="product-grid">
+                <!-- Example Product Card -->
+                <div class="product-card">
+                    <img src="placeholder-part.jpg" alt="Cold Air Intake">
+                    <p class="product-title">Cold Air Intake System</p>
+                    <p class="product-sku">SKU: XYZ-456</p>
+                    <p class="product-price">\$299.99</p>
+                    <div class="fitment-status status-alert">
+                         Fitment: Vehicle Required
+                    </div>
+                </div>
+                <!-- More product cards here... -->
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Auto Parts Pro. All rights reserved. | <a href="#">Policies</a></p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
