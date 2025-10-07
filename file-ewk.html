@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>تجهيز أوتو لمكاسة | قطع غيار سيارات أصلية</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="قطع غيار سيارات أصلية وبأسعار تنافسية. شحن سريع لجميع أنحاء المملكة.">
+  <link rel="icon" href="img/logo.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container flex-between">
+      <a href="index.html" class="brand">
+        <img src="img/logo.svg" alt="شعار تجهيز أوتو لمكاسة">
+        <span>تجهيز أوتو لمكاسة</span>
+      </a>
+      <nav class="desktop-menu">
+        <a href="#parts">قطع الغيار</a>
+        <a href="#about">من نحن</a>
+        <a href="#contact">تواصل معنا</a>
+        <span id="cartIcon" class="cart-icon">🛒<span id="cartCount">0</span></span>
+      </nav>
+      <button id="hamburger" class="hamburger" aria-label="فتح القائمة">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>قطع غيار أصلية لسيارتك</h1>
+        <p>أكثر من 15 ألف قطعة متوفرة في المخزن. نوصلها لبابك أينما كنت.</p>
+        <a href="#parts" class="btn primary">تسوق الآن</a>
+      </div>
+    </section>
+
+    <section id="parts" class="products">
+      <div class="container">
+        <h2>الأكثر مبيعاً</h2>
+        <div class="grid" id="productGrid">
+          <!-- يتم ملؤها من JS -->
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container">
+        <h2>لماذا تجهيز أوتو لمكاسة؟</h2>
+        <ul>
+          <li>قطع أصلية 100% مع ضمان.</li>
+          <li>أسعار تنافسية وعروض أسبوعية.</li>
+          <li>شحن خلال 24–48 ساعة داخل المدن الرئيسية.</li>
+          <li>خدمة عملاء على مدار الساعة.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <h2>تواصل معنا</h2>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <input type="text" name="name" placeholder="الاسم" required>
+          <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+          <textarea name="message" placeholder="رسالتك" required></textarea>
+          <button type="submit" class="btn primary">إرسال</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 تجهيز أوتو لمكاسة. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
